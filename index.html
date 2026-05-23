@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les 3 erreurs qui bloquent les débutantes en pole dance</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noir: #0d0d0d;
+    --creme: #f5f0e8;
+    --or: #c9a96e;
+    --or-clair: #e8d5a3;
+    --rouge: #c0392b;
+    --gris: #6b6b6b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--noir);
+    color: var(--creme);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,169,110,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-pole {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--or) 20%, var(--or) 80%, transparent);
+    opacity: 0.3;
+  }
+
+  .badge {
+    display: inline-block;
+    border: 1px solid var(--or);
+    color: var(--or);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    line-height: 1.15;
+    max-width: 780px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--or);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(245,240,232,0.65);
+    max-width: 520px;
+    margin-bottom: 48px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--or);
+    color: var(--noir);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .cta-btn:hover { background: var(--or-clair); transform: translateY(-2px); }
+
+  .hero-note {
+    margin-top: 20px;
+    font-size: 12px;
+    color: rgba(245,240,232,0.35);
+    letter-spacing: 1px;
+  }
+
+  /* ---- INTRO ---- */
+  .section {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--or);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1.25;
+    margin-bottom: 24px;
+  }
+
+  .section p {
+    color: rgba(245,240,232,0.75);
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+  }
+
+  /* ---- DIVIDER ---- */
+  .divider {
+    border: none;
+    border-top: 1px solid rgba(201,169,110,0.2);
+    margin: 0;
+  }
+
+  /* ---- ERREURS ---- */
+  .errors-bg {
+    background: #111;
+  }
+
+  .errors-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .error-card {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 32px;
+    padding: 48px 0;
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .error-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .error-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--or);
+    opacity: 0.25;
+    line-height: 1;
+    font-weight: 700;
+  }
+
+  .error-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+  }
+
+  .error-tag {
+    display: inline-block;
+    background: rgba(192,57,43,0.2);
+    color: #e88;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .error-content p {
+    color: rgba(245,240,232,0.7);
+    font-size: 1rem;
+    margin-bottom: 14px;
+  }
+
+  /* ---- SOLUTION BOX ---- */
+  .solution-box {
+    margin-top: 20px;
+    border-left: 2px solid var(--or);
+    padding: 16px 20px;
+    background: rgba(201,169,110,0.06);
+  }
+
+  .solution-box .sol-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--or);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .solution-box p {
+    font-size: 0.95rem;
+    color: rgba(245,240,232,0.8);
+    margin: 0;
+  }
+
+  /* ---- BONUS ---- */
+  .bonus-section {
+    background: linear-gradient(135deg, rgba(201,169,110,0.08) 0%, rgba(0,0,0,0) 60%);
+    border-top: 1px solid rgba(201,169,110,0.2);
+    border-bottom: 1px solid rgba(201,169,110,0.2);
+  }
+
+  .bonus-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .checklist {
+    list-style: none;
+    margin-top: 32px;
+  }
+
+  .checklist li {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(245,240,232,0.07);
+    color: rgba(245,240,232,0.8);
+    font-size: 1rem;
+    align-items: flex-start;
+  }
+
+  .check-icon {
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--or);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--or);
+    font-size: 12px;
+  }
+
+  /* ---- TESTIMONIALS ---- */
+  .testimonials {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 600px) {
+    .testi-grid { grid-template-columns: 1fr; }
+  }
+
+  .testi-card {
+    background: #111;
+    padding: 28px;
+    border: 1px solid rgba(201,169,110,0.12);
+  }
+
+  .testi-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: rgba(245,240,232,0.85);
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
+  .testi-name {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--or);
+    font-weight: 500;
+  }
+
+  .stars { color: var(--or); font-size: 13px; margin-bottom: 12px; }
+
+  /* ---- FINAL CTA ---- */
+  .final-cta {
+    text-align: center;
+    padding: 100px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(201,169,110,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .final-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    max-width: 600px;
+    margin: 0 auto 24px;
+    line-height: 1.2;
+  }
+
+  .final-cta p {
+    color: rgba(245,240,232,0.6);
+    font-size: 1rem;
+    max-width: 440px;
+    margin: 0 auto 40px;
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    border-top: 1px solid rgba(201,169,110,0.15);
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 12px;
+    color: rgba(245,240,232,0.25);
+    letter-spacing: 1px;
+  }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero .badge,
+  .hero h1,
+  .hero-sub,
+  .cta-btn,
+  .hero-note {
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero .badge    { animation-delay: 0.1s; }
+  .hero h1        { animation-delay: 0.25s; }
+  .hero-sub       { animation-delay: 0.4s; }
+  .cta-btn        { animation-delay: 0.55s; }
+  .hero-note      { animation-delay: 0.7s; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-pole"></div>
+  <div class="badge">Guide Gratuit · Débutantes</div>
+  <h1>Les <em>3 erreurs</em> qui bloquent 90 % des débutantes en pole dance</h1>
+  <p class="hero-sub">Et ce que les élèves qui progressent vite font différemment — dès la première semaine.</p>
+  <a href="#erreurs" class="cta-btn">Je veux lire le guide →</a>
+  <p class="hero-note">100 % gratuit · Aucun équipement requis pour appliquer les conseils</p>
+</section>
+
+<hr class="divider">
+
+<!-- INTRO -->
+<section class="section">
+  <p class="section-label">Pourquoi ce guide existe</p>
+  <h2>Tu te demandes si tu es "faite" pour le pole ?</h2>
+  <p>Mauvaise nouvelle : cette question, presque toutes les débutantes se la posent après 2 ou 3 semaines. Elles glissent, elles ont des bleus, elles n'arrivent pas à monter, elles comparent leur corps à des vidéos Instagram et elles abandonnent.</p>
+  <p>Bonne nouvelle : dans 95 % des cas, ce n'est pas une question de morphologie, de force ou de souplesse. C'est une question de <strong>méthode</strong>. Et ça se corrige très vite.</p>
+  <p>Ce guide t'explique les 3 erreurs les plus communes — et leur solution concrète, applicable dès ton prochain cours.</p>
+</section>
+
+<hr class="divider">
+
+<!-- ERREURS -->
+<div class="errors-bg" id="erreurs">
+  <div class="errors-wrap">
+    <p class="section-label">Les 3 erreurs</p>
+    <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.8rem); margin-bottom:8px;">Ce qui te bloque vraiment</h2>
+
+    <!-- Erreur 1 -->
+    <div class="error-card" id="e1">
+      <div class="error-number">1</div>
+      <div class="error-content">
+        <h3>Croire que tu glisses parce que tu manques de force</h3>
+        <span class="error-tag">Erreur de diagnostic</span>
+        <p>C'est le mythe numéro un. Quand on n'arrive pas à tenir la barre, le réflexe est de se dire "je ne suis pas assez musclée". Alors on se décourage, on pense qu'il faut d'abord "se préparer" avant de progresser.</p>
+        <p>La réalité : la grip ne vient pas des biceps. Elle vient du <strong>placement du coude, de la pression interne du bras et de l'état de ta peau</strong>. Une peau hydratée (crème, huile) glisse systématiquement. Une peau sèche et chaude adhère.</p>
+        <div class="solution-box">
+          <p class="sol-label">✦ Solution rapide</p>
+          <p>N'applique aucune crème le jour du cours. Si tu transpires beaucoup, utilise un spray grip léger (grip aid). Et travaille sur le "active grip" : au lieu de serrer la barre dans ta main, pense à <em>pousser</em> ton bras contre elle. Le résultat est immédiat.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Erreur 2 -->
+    <div class="error-card" id="e2">
+      <div class="error-number">2</div>
+      <div class="error-content">
+        <h3>Vouloir sauter les figures "moches" pour aller aux jolies</h3>
+        <span class="error-tag">Erreur de progression</span>
+        <p>Les débutantes regardent des videos de pole et rêvent des figures aériennes spectaculaires. Résultat : elles bâclent les bases — le Body Roll, le Fireman, le Chair Spin — parce qu'elles semblent trop simples, pas assez "instagrammables".</p>
+        <p>Ces figures de base sont exactement là où se construisent le gainage profond, la conscience corporelle et la connexion avec la barre. Sans elles, les figures avancées ne seront jamais propres — et surtout, elles deviendront dangereuses.</p>
+        <div class="solution-box">
+          <p class="sol-label">✦ Solution rapide</p>
+          <p>Filme-toi sur une figure "basique" que tu fais déjà. Tu verras immédiatement ce qui manque : les jambes tendues, le dos droit, le regard. Travailler la qualité d'exécution de 3 figures simples te donnera plus confiance — et plus de résultats — que d'essayer 10 figures que tu ne maîtrises pas.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Erreur 3 -->
+    <div class="error-card" id="e3">
+      <div class="error-number">3</div>
+      <div class="error-content">
+        <h3>Interpréter la douleur comme un signal d'arrêt</h3>
+        <span class="error-tag">Erreur de lecture du corps</span>
+        <p>Les "pole kisses" — ces bleus et brûlures de friction que la barre laisse sur les cuisses, genoux et bras intérieurs — sont une partie normale des premiers mois. La peau n'est pas encore conditionnée. Beaucoup de débutantes pensent qu'elles font quelque chose de mal, ou que leur corps "n'est pas fait pour ça".</p>
+        <p>Il y a une nuance essentielle à comprendre : la douleur de friction/pression (pole kiss) est normale et temporaire. La douleur articulaire ou dans les tendons est un signal à écouter. Savoir faire la différence change tout.</p>
+        <div class="solution-box">
+          <p class="sol-label">✦ Solution rapide</p>
+          <p>Accueille les bleus comme des "tatouages de progression" — ils disparaissent en 2 à 4 semaines quand la peau se conditionne. Pour accélérer, travaille les zones de contact progressivement : quelques secondes d'abord, augmente la durée sur plusieurs semaines. Et note chaque semaine quelle sensation a disparu : c'est ton vrai baromètre de progrès.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- BONUS CHECKLIST -->
+<section class="bonus-section">
+  <div class="bonus-inner">
+    <p class="section-label">Bonus inclus</p>
+    <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:8px;">Ta checklist "Première semaine sans blocage"</h2>
+    <p style="color:rgba(245,240,232,0.6);">À cocher avant chaque séance pour éliminer les obstacles les plus courants dès le départ.</p>
+
+    <ul class="checklist">
+      <li>
+        <span class="check-icon">✦</span>
+        <span><strong>Peau sèche :</strong> aucune crème dans les 12h avant le cours sur les bras, les cuisses et les chevilles.</span>
+      </li>
+      <li>
+        <span class="check-icon">✦</span>
+        <span><strong>Tenue adaptée :</strong> shorts courts et haut sans manches — les zones de contact (peau sur barre) sont nécessaires, pas accessoires.</span>
+      </li>
+      <li>
+        <span class="check-icon">✦</span>
+        <span><strong>Échauffement ciblé :</strong> poignets, épaules, hanches. 5 minutes suffisent mais elles sont non négociables.</span>
+      </li>
+      <li>
+        <span class="check-icon">✦</span>
+        <span><strong>1 figure à travailler :</strong> choisis une seule figure par séance et travaille-la vraiment. Moins de quantité, plus de qualité.</span>
+      </li>
+      <li>
+        <span class="check-icon">✦</span>
+        <span><strong>Tu te filmes :</strong> même 30 secondes. Tu verras ce que le miroir ne montre pas et tu mesureras ta progression sur la durée.</span>
+      </li>
+      <li>
+        <span class="check-icon">✦</span>
+        <span><strong>Tu notes 1 victoire :</strong> aussi petite soit-elle. La douleur a diminué ? Tu as tenu 2 secondes de plus ? C'est une victoire.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <p class="section-label">Elles l'ont appliqué</p>
+  <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.6rem);">Ce que ça change en vrai</h2>
+
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-quote">"J'allais arrêter après 3 semaines. Je pensais que je glissais à cause de mes bras trop faibles. Le truc de la peau sèche m'a changé la vie littéralement."</p>
+      <p class="testi-name">— Camille, 31 ans · Lyon</p>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-quote">"Les bleus me faisaient peur. Depuis que je comprends que c'est normal, je stresse beaucoup moins et je progresse sans m'en rendre compte."</p>
+      <p class="testi-name">— Sarah, 26 ans · Paris</p>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-quote">"Se filmer c'est douloureux au début mais tellement utile. J'ai vu des choses que ma prof me disait depuis 2 mois que je n'arrivais pas à sentir."</p>
+      <p class="testi-name">— Ambre, 38 ans · Bordeaux</p>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-quote">"J'adorais les grosses figures mais depuis que je travaille mes bases sérieusement, tout est devenu plus propre — et enfin ça ressemble à quelque chose !"</p>
+      <p class="testi-name">— Juliette, 22 ans · Nantes</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <p class="section-label" style="margin-bottom:24px;">La prochaine étape</p>
+  <h2>Tu veux progresser plus vite, avec un accompagnement personnalisé ?</h2>
+  <p>Découvre mes programmes en ligne et mes cours en visio — conçus pour les débutantes qui veulent des résultats réels, pas des promesses.</p>
+  <a href="#" class="cta-btn">Voir les programmes →</a>
+  <p style="margin-top:20px; font-size:12px; color:rgba(245,240,232,0.3); letter-spacing:1px;">Cours individuels · Programmes en ligne · Sessions de groupe</p>
+</section>
+
+<footer>
+  © 2026 · Pole Dance Studio · Tous droits réservés
+</footer>
+
+<script>
+  // Intersection Observer pour les cartes d'erreurs
+  const cards = document.querySelectorAll('.error-card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 150);
+      }
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(card => observer.observe(card));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+
+</body>
+</html>
